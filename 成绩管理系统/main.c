@@ -107,7 +107,22 @@ void load_from_file()
         printf("文件打开失败！\n");
         return;
     }
-    fread(students,sizeof(student),count,fp);
+    fseek(fp,0,SEEK_END);
+    long file_size=ftell(fp);
+    fseek(fp,0,SEEK_SET);
+    if(file_size>0)
+    {
+        count = file_size/sizeof(student);
+        size_t result = fread(students,sizeof(student),count,fp);
+        if(result!=count)
+        {
+            printf("警告：读取数据可能不完整!\n");
+        }
+    }
+    else
+    {
+        count=0;
+    }
     fclose(fp);
     printf("加载成功！\n");
 }
