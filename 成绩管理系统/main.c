@@ -68,7 +68,7 @@ void add_student()
     printf("请输入学号:");
     scanf("%d",&students[count].id);
     printf("请输入姓名:");
-    scanf("%S",&students[count].name);
+    scanf("%s",&students[count].name);
     printf("请输入成绩:");
     scanf("%f",&students[count].score); 
     count++;
